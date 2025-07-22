@@ -1,0 +1,14 @@
+export const configCompany = {
+    name: 'SilverDevelopment',
+    info: 'ТОВ "СМАРТ ХОРІЗОНС" ЄДРПОУ 45470138',
+    email: 'kapran002@ukr.net',
+    phone: '+380930093279',
+    address: 'Україна, 02138 місто Київ, вул. Екстер Олександри, будинок 9',
+    formEmail: 'silverdevelopmentnew@gmail.com',
+    olx: 'https://www.olx.ua/uk/list/user/2hseJj',
+    prom: 'https://prom.ua/c4122303-tov-smart-horizons.html',
+    facebook: 'https://www.facebook.com/profile.php?id=61578364689074',
+    instagram: 'https://www.instagram.com/silver.development/',
+    linkedin: 'https://www.linkedin.com/in/max-capran-b0a5a3376/',
+    whatsapp: 'https://www.whatsapp.com/silverDevelopment',
+};
