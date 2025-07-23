@@ -19,8 +19,9 @@ import {
 import { useLanguage } from '@/hooks/useLanguage';
 import { ContactForm } from '@/components/common/ContactForm';
 import { configCompany } from '@/config/configCompany';
+import { Language } from '@/types/language';
 
-const getContacts = (t: (key: string) => string) => [
+const getContacts = (t: (key: string) => string, language: Language) => [
     {
         icon: <Mail className="text-emerald-500" size={28} />,
         title: t('contact.email.title'),
@@ -36,13 +37,16 @@ const getContacts = (t: (key: string) => string) => [
     {
         icon: <MapPin className="text-violet-500" size={28} />,
         title: t('contact.address.title'),
-        content: configCompany.address,
+        content:
+            language === 'en'
+                ? configCompany.addressEng
+                : configCompany.address,
         color: 'from-violet-500/10 to-purple-500/10',
     },
 ];
 
 export function ContactSection() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     return (
         <section
@@ -104,47 +108,54 @@ export function ContactSection() {
                     <div className="lg:col-span-2 space-y-8">
                         <SlideIn direction="left">
                             <div className="space-y-8">
-                                {getContacts(t).map((contact, index) => (
-                                    <ScrollReveal
-                                        key={index}
-                                        direction="left"
-                                        delay={index * 0.2}
-                                    >
-                                        <motion.div
-                                            whileHover={{ x: 10, scale: 1.02 }}
-                                            transition={{ duration: 0.3 }}
+                                {getContacts(t, language).map(
+                                    (contact, index) => (
+                                        <ScrollReveal
+                                            key={index}
+                                            direction="left"
+                                            delay={index * 0.2}
                                         >
-                                            <Card
-                                                className={`
+                                            <motion.div
+                                                whileHover={{
+                                                    x: 10,
+                                                    scale: 1.02,
+                                                }}
+                                                transition={{ duration: 0.3 }}
+                                            >
+                                                <Card
+                                                    className={`
                                                 p-6 bg-gradient-to-br ${contact.color} 
                                                 border-2 border-white/10 rounded-2xl
                                                 hover:border-emerald-500/30 transition-all duration-300
                                                 backdrop-blur-sm
                                             `}
-                                            >
-                                                <div className="flex items-start space-x-4">
-                                                    <motion.div
-                                                        whileHover={{
-                                                            scale: 1.2,
-                                                            rotate: 10,
-                                                        }}
-                                                        className="flex-shrink-0 p-3 bg-white/10 rounded-xl backdrop-blur-sm"
-                                                    >
-                                                        {contact.icon}
-                                                    </motion.div>
-                                                    <div>
-                                                        <h3 className="font-bold text-black text-lg mb-2">
-                                                            {contact.title}
-                                                        </h3>
-                                                        <p className="text-gray-600 leading-relaxed">
-                                                            {contact.content}
-                                                        </p>
+                                                >
+                                                    <div className="flex items-start space-x-4">
+                                                        <motion.div
+                                                            whileHover={{
+                                                                scale: 1.2,
+                                                                rotate: 10,
+                                                            }}
+                                                            className="flex-shrink-0 p-3 bg-white/10 rounded-xl backdrop-blur-sm"
+                                                        >
+                                                            {contact.icon}
+                                                        </motion.div>
+                                                        <div>
+                                                            <h3 className="font-bold text-black text-lg mb-2">
+                                                                {contact.title}
+                                                            </h3>
+                                                            <p className="text-gray-600 leading-relaxed">
+                                                                {
+                                                                    contact.content
+                                                                }
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </Card>
-                                        </motion.div>
-                                    </ScrollReveal>
-                                ))}
+                                                </Card>
+                                            </motion.div>
+                                        </ScrollReveal>
+                                    ),
+                                )}
                             </div>
                         </SlideIn>
 

@@ -1,9 +1,11 @@
 export const configCompany = {
     name: 'SilverDevelopment',
     info: 'ТОВ "СМАРТ ХОРІЗОНС" ЄДРПОУ 45470138',
+    infoEng: 'LLC "SMART HORIZONS" 45470138',
     email: 'kapran002@ukr.net',
     phone: '+380930093279',
     address: 'Україна, 02138 місто Київ, вул. Екстер Олександри, будинок 9',
+    addressEng: 'Ukraine, 02138 Kyiv, Olexandra Ekster Street, 9',
     formEmail: 'silverdevelopmentnew@gmail.com',
     olx: 'https://www.olx.ua/uk/list/user/2hseJj',
     prom: 'https://prom.ua/c4122303-tov-smart-horizons.html',

@@ -31,7 +31,7 @@ interface FooterProps {
 }
 
 export function Footer({ scrollToSection }: FooterProps) {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     return (
         <footer className="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white py-20 relative overflow-hidden">
@@ -99,8 +99,16 @@ export function Footer({ scrollToSection }: FooterProps) {
                                 </div>
 
                                 <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
-                                    <p>{configCompany.info}</p>
-                                    <p>{configCompany.address}</p>
+                                    <p>
+                                        {language === 'en'
+                                            ? configCompany.infoEng
+                                            : configCompany.info}
+                                    </p>
+                                    <p>
+                                        {language === 'en'
+                                            ? configCompany.addressEng
+                                            : configCompany.address}
+                                    </p>
                                 </div>
 
                                 <div className="mt-8">
